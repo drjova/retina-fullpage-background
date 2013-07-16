@@ -6,6 +6,7 @@
         base.$el.data("RetinaFullBackground", base);
         base.init = function(){
             base.options = $.extend({},$.RetinaFullBackground.defaultOptions, options);
+
             // Check if paths are array or single
             base.path = base.options.path;
             base.filename = base.options.filename;
@@ -13,13 +14,13 @@
             // Check it is retina display
             if(window.devicePixelRatio >= 2) {
                 var suffix;
-                if($height > 960){ // iPhone 5
+                if($height == 568){ // iPhone 5
                     suffix = base.options.iphone5;
-                }else if($height <= 960){ // iPhone 4/4s
+                }else{ // iPhone 4/4s
                     suffix = base.options.iphone4;
                 }
             }else{
-                if($height <= 480){ // iPhone 3/3s
+                if($height == 480){ // iPhone 3/3s
                     suffix = base.options.iphone3;
                 }else{
                     suffix = false;
@@ -41,8 +42,6 @@
             }else{
                 $.backstretch(finalpath);
             }
-            
-            
         };
         base.init();
     };
